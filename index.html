@@ -197,26 +197,17 @@
   <script>
     // === CONFIGURACIÓN ===
     const WHATSAPP_NUMBER = "+56942955777"; // número sin espacios
-    const HORARIO = { abre: "10:00", cierra: "16:00" };
+    const HORARIO = { abre: "8:00", cierra: "16:00" };
 
     // Menú semanal (edítalo cada semana)
-    const menuSemana = {
-      Lunes: [
-        { nombre: "Porotos con riendas", precio: 5000, tags:["Clásico chileno"], img:"https://images.unsplash.com/photo-1542442810-419c6a3d4d43?q=80&w=1200&auto=format&fit=crop" }
-      ],
-      Martes: [
-        { nombre: "Pastel de choclo", precio: 5000, tags:["Temporada"], img:"https://images.unsplash.com/photo-1505575972945-2805f28f5aff?q=80&w=1200&auto=format&fit=crop" }
-      ],
-      Miércoles: [
-        { nombre: "Charquicán", precio: 5000, tags:["Casero"], img:"https://images.unsplash.com/photo-1552913901-8caa7d8cdbe6?q=80&w=1200&auto=format&fit=crop" }
-      ],
-      Jueves: [
-        { nombre: "Cazuela de pollo", precio: 5000, tags:["Caldito"], img:"https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop" }
-      ],
-      Viernes: [
-        { nombre: "Pescado frito con ensalada chilena", precio: 5000, tags:["Viernes"], img:"https://images.unsplash.com/photo-1553621042-f6e147245754?q=80&w=1200&auto=format&fit=crop" }
-      ]
-    };
+  const menuSemana = {
+  Lunes:    [{ nombre:"Pollo al jugo con puré", precio:5000, img:"./img/polloaljugoconpure_cocinandoconpoly.jpg" }],
+  Martes:   [{ nombre:"Acelga con papas doradas y arroz",    precio:5000, img:"./img/arrozconacelgaypapasdoradas_cocinandoconpoly.jpg" }],
+  Miércoles:[{ nombre:"Cazuela de pollo",          precio:5000, img:"./img/Cazueladeave_cocinandoconpoly.jpg" }],
+  Jueves:   [{ nombre:"Pastel de pantrucas",    precio:5000, img:"./img/pasteldepantruca_cocinandoconpoly.jpg" }],
+  Viernes:  [{ nombre:"Carne mechada con puré", precio:5000, img:"./img/carnemechadaconpure_cocinandoconpoly.jpg" }]
+};
+
 
     // Utilidades
     const $ = (sel, el=document) => el.querySelector(sel);
