@@ -10,9 +10,25 @@
   <meta property="og:title" content="Cocinando con Poly – Almuerzos caseros en tu condominio" />
   <meta property="og:description" content="Menú semanal, platos caseros y entrega en el condominio. Pide por WhatsApp." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://picsum.photos/1200/630?random=14" />
-  <meta name="theme-color" content="#f97316" />
-  <link rel="icon" href="./img/logo.png">
+  <meta property="og:url" content="https://hectoraburto.github.io/cocinandoconpoly/" />
+  <meta property="og:image" content="https://hectoraburto.github.io/cocinandoconpoly/img/og.png?v=1" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Cocinando con Poly – Platos caseros en el condominio" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Cocinando con Poly – Almuerzos caseros en tu condominio" />
+  <meta name="twitter:description" content="Menú semanal, platos caseros y entrega en el condominio. Pide por WhatsApp." />
+  <meta name="twitter:image" content="https://hectoraburto.github.io/cocinandoconpoly/img/og.png?v=1" />
+  <link rel="canonical" href="https://hectoraburto.github.io/cocinandoconpoly/" />
+  <!-- Icons -->
+  <link rel="icon" href="./favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon-16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="./img/apple-touch-icon.png" />
+  <link rel="manifest" href="./site.webmanifest" />
+  <meta name="apple-mobile-web-app-title" content="Cocinando con Poly" />
+  <meta name="application-name" content="Cocinando con Poly" />
   <style>
     :root { --brand:#f97316; --brand-600:#ea580c; --ink:#141414; --muted:#666; --bg:#fffdf9; --card:#ffffff; --shadow:0 10px 25px rgba(0,0,0,.07); --radius:18px }
     * { box-sizing:border-box }
@@ -22,11 +38,11 @@
     .container { width:min(1100px, 92%); margin-inline:auto }
 
     /* Header */
-    header { position:sticky; top:0; z-index:50; background: rgba(252, 168, 2, 0.85); backdrop-filter: blur(6px); border-bottom:1px solid #eee }
+    header { position:sticky; top:0; z-index:50; background: rgba(250, 168, 3, 0.85); backdrop-filter: blur(6px); border-bottom:1px solid #f9e103 }
     .nav { display:flex; align-items:center; justify-content:space-between; padding:.8rem 0 }
     .brand { display:flex; align-items:center; gap:.7rem; font-weight:700 }
     .brand img { width:40px; height:40px; object-fit:contain; border-radius:10px }
-    .cta { display:inline-flex; align-items:center; gap:.5rem; background:var(--brand); color:white; padding:.7rem 1rem; border-radius:999px; font-weight:600; box-shadow: var(--shadow) }
+    .cta { display:inline-flex; align-items:center; gap:.5rem; background:var(--brand); color:rgb(255, 255, 255); padding:.7rem 1rem; border-radius:999px; font-weight:600; box-shadow: var(--shadow) }
     .cta:hover { background:var(--brand-600) }
 
     /* Hero */
@@ -107,24 +123,20 @@
       <div>
         <div class="status" id="stateBadge">● <span>Tomando pedidos para hoy</span></div>
         <h1>Menú semanal con platos caseros, frescos y convenientes</h1>
-        <p class="tiny" style="max-width:56ch">Entrego <strong>dentro del condominio</strong> entre 13:30 y 15:00. Reserva o pide el mismo día hasta agotar stock.</p>
+        <p class="tiny" style="max-width:56ch">Entregamos <strong>dentro del condominio</strong> entre 13:30 y 15:00. Reserva o pide el mismo día hasta agotar stock.</p>
         <div class="chips">
           <span class="chip">Depto 416 Torre B1</span>
+          <span class="chip">Previa reserva: Opciones vegetarianas</span>
           <span class="chip">Transferencia / efectivo</span>
-          <span class="chip">Previa resera: Opciones vegetarianas</span>
+          
         </div>
-        <div class="note">💡 Paola Andrea Sánchez Torres
-RUT: 126342225
-Mercado Pago
-Cuenta Vista
-Número de cuenta: 1051244960
-polilla197417@gmail.com </div>
+        <div class="note">💡 Paola Andrea Sánchez Torres RUT: 126342225 Mercado Pago Cuenta Vista Número de cuenta: 1051244960 polilla197417@gmail.com</em>.</div>
         <div style="margin-top:1rem">
           <a class="cta" id="btn-hero" href="#menu">Ver menú y pedir</a>
         </div>
       </div>
       <div class="card">
-        <img src="img/platoscaseros_cocinandoconpoly.png" alt="Platos caseros" />
+        <img src= "img/platoscaseros_cocinandoconpoly.png" alt="Platos caseros"  />
       </div>
     </section>
 
@@ -162,7 +174,7 @@ polilla197417@gmail.com </div>
           <div class="dish"><div>2️⃣</div><div><h3>Escríbenos por WhatsApp</h3><p class="tiny">Presiona “Pedir por WhatsApp” y envía tu pedido con tu torre y depto.</p></div></div>
         </div>
         <div class="col-4">
-          <div class="dish"><div>3️⃣</div><div><h3>Recibe y disfruta</h3><p class="tiny">Entregamos entre 13:00–15:00 dentro del condominio.</p></div></div>
+          <div class="dish"><div>3️⃣</div><div><h3>Recibe y disfruta</h3><p class="tiny">Entregamos entre 13:30–15:00 dentro del condominio.</p></div></div>
         </div>
       </div>
     </section>
@@ -175,7 +187,7 @@ polilla197417@gmail.com </div>
           <div class="note">
             <p><strong>WhatsApp:</strong> <a id="waLink" href="#">+56 9 4295 5777</a></p>
             <p class="tiny">Horario de atención: 10:00 a 16:00 (Lun–Vie)</p>
-            <p class="tiny">Ubicación: Condominio Jardin del centro</p>
+            <p class="tiny">Ubicación: Condominio (entrega interna)</p>
           </div>
         </div>
         <div class="col-6">
@@ -194,7 +206,7 @@ polilla197417@gmail.com </div>
         <div class="tiny">Hecho con ❤ en el condominio</div>
       </div>
       <div style="text-align:right">
-        <div class="tiny">© <span id="year"></span> Cocinando con Poly ❤ · </div>
+        <div class="tiny">© <span id="year"></span> Cocinando con Poly · Sitio estático (HTML + CSS + JS)</div>
       </div>
     </div>
   </footer>
@@ -202,22 +214,21 @@ polilla197417@gmail.com </div>
   <script>
     // === CONFIGURACIÓN ===
     const WHATSAPP_NUMBER = "+56942955777"; // número sin espacios
-    const HORARIO = { abre: "8:00", cierra: "16:00" };
+    const HORARIO = { abre: "10:00", cierra: "16:00" };
 
     // Menú semanal (edítalo cada semana)
-  const menuSemana = {
+    const menuSemana = {
   Lunes:    [{ nombre:"Pollo al jugo con puré", precio:5000, img:"./img/polloaljugoconpure_cocinandoconpoly.jpg" }],
   Martes:   [{ nombre:"Acelga con papas doradas y arroz",    precio:5000, img:"./img/arrozconacelgaypapasdoradas_cocinandoconpoly.jpg" }],
   Miércoles:[{ nombre:"Cazuela de pollo",          precio:5000, img:"./img/Cazueladeave_cocinandoconpoly.jpg" }],
   Jueves:   [{ nombre:"Pastel de pantrucas",    precio:5000, img:"./img/pasteldepantruca_cocinandoconpoly.jpg" }],
   Viernes:  [{ nombre:"Carne mechada con puré", precio:5000, img:"./img/carnemechadaconpure_cocinandoconpoly.jpg" }]
-};
-
+    };
 
     // Utilidades
     const $ = (sel, el=document) => el.querySelector(sel);
     const $$ = (sel, el=document) => [...el.querySelectorAll(sel)];
-    const waText = (dia, plato) => encodeURIComponent(`Hola Paola! Quiero pedir *${plato}* para *${dia}*. Soy de la Torre/Depto: `);
+    const waText = (dia, plato) => encodeURIComponent(`Hola Poly! Quiero pedir *${plato}* para *${dia}*. Soy de la Torre/Depto: `);
     const waBase = () => `https://wa.me/${WHATSAPP_NUMBER}`;
 
     // Plato del día
@@ -313,7 +324,7 @@ polilla197417@gmail.com </div>
       }
     }
     function setMainWaLinks(){
-      const link = `${waBase()}?text=${encodeURIComponent('Hola Paola, me gustaría pedir del menú de esta semana. ')}`;
+      const link = `${waBase()}?text=${encodeURIComponent('Hola Poly, me gustaría pedir del menú de esta semana. ')}`;
       document.getElementById('waLink').href = link;
       document.getElementById('btn-header').href = link;
       document.getElementById('btn-hero').href = '#menu';
