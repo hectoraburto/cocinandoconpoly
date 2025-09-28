@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cocinando con Poly – Sabor que conquista</title>
+  <meta name="description" content="Almuerzos caseros, ricos y convenientes. Entrega dentro del condominio. Menú semanal con platos frescos y variados. Pide por WhatsApp." />
+  <meta name="robots" content="index,follow" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Cocinando con Poly – Almuerzos caseros en tu condominio" />
+  <meta property="og:description" content="Menú semanal, platos caseros y entrega en el condominio. Pide por WhatsApp." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://hectoraburto.github.io/cocinandoconpoly/" />
+  <meta property="og:image" content="https://hectoraburto.github.io/cocinandoconpoly/img/og.png?v=1" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Cocinando con Poly – Platos caseros en el condominio" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Cocinando con Poly – Almuerzos caseros en tu condominio" />
+  <meta name="twitter:description" content="Menú semanal, platos caseros y entrega en el condominio. Pide por WhatsApp." />
+  <meta name="twitter:image" content="https://hectoraburto.github.io/cocinandoconpoly/img/og.png?v=1" />
+  <link rel="canonical" href="https://hectoraburto.github.io/cocinandoconpoly/" />
+  <!-- Icons -->
+  <link rel="icon" href="./favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon-16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="./img/apple-touch-icon.png" />
+  <link rel="manifest" href="./site.webmanifest" />
+  <meta name="apple-mobile-web-app-title" content="Cocinando con Poly" />
+  <meta name="application-name" content="Cocinando con Poly" />
+  <style>
+    :root { --brand:#f97316; --brand-600:#ea580c; --ink:#141414; --muted:#666; --bg:#fffdf9; --card:#ffffff; --shadow:0 10px 25px rgba(0,0,0,.07); --radius:18px }
+    * { box-sizing:border-box }
+    html, body { margin:0; font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial; color:var(--ink); background: var(--bg) }
+    a { color: var(--brand-600); text-decoration: none }
+    img { max-width:100%; height:auto; border-radius: var(--radius) }
+    .container { width:min(1100px, 92%); margin-inline:auto }
+
+    /* Header */
+    header { position:sticky; top:0; z-index:50; background: rgba(250, 168, 3, 0.85); backdrop-filter: blur(6px); border-bottom:1px solid #f9e103 }
+    .nav { display:flex; align-items:center; justify-content:space-between; padding:.8rem 0 }
+    .brand { display:flex; align-items:center; gap:.7rem; font-weight:700 }
+    .brand img { width:40px; height:40px; object-fit:contain; border-radius:10px }
+    .cta { display:inline-flex; align-items:center; gap:.5rem; background:var(--brand); color:rgb(255, 255, 255); padding:.7rem 1rem; border-radius:999px; font-weight:600; box-shadow: var(--shadow) }
+    .cta:hover { background:var(--brand-600) }
+
+    /* Hero */
+    .hero { display:grid; grid-template-columns: 1.1fr .9fr; gap:2rem; padding: 1.6rem 0 1rem }
+    .hero h1 { font-size: clamp(1.9rem, 2.5vw + 1rem, 3rem); line-height:1.1; margin:.2rem 0 1rem }
+    .chips { display:flex; gap:.6rem; flex-wrap:wrap; margin:.8rem 0 1rem }
+    .chip { background:#fff; border:1px solid #eee; padding:.35rem .7rem; border-radius:999px; font-size:.9rem; color:#333 }
+    .hero .card { background:var(--card); padding:1rem; border-radius: var(--radius); box-shadow: var(--shadow) }
+
+    /* Banner Plato del Día */
+    .banner-dia { display:flex; align-items:center; gap:1rem; background:#fff; border:1px solid #ffe4d5; border-left:6px solid var(--brand); padding:1rem; border-radius:14px; box-shadow: var(--shadow) }
+    .banner-dia img { width:120px; height:90px; object-fit:cover; border-radius:12px }
+    .banner-dia .precio { font-weight:800; color:var(--brand) }
+
+    /* Tabs */
+    .tabs { display:flex; gap:.5rem; flex-wrap:wrap; margin:1rem 0 }
+    .tab { border:1px solid #eee; background:#fff; padding:.55rem .9rem; border-radius:999px; font-weight:600; cursor:pointer }
+    .tab[aria-selected="true"] { background:var(--brand); color:#fff; border-color:transparent }
+
+    /* Grid util */
+    .grid { display:grid; grid-template-columns: repeat(12, 1fr); gap:1rem }
+    .col-12 { grid-column: span 12 }
+    .col-6 { grid-column: span 6 }
+    .col-4 { grid-column: span 4 }
+    @media (max-width:920px){ .hero{ grid-template-columns:1fr } .col-6{ grid-column: span 12 } .col-4{ grid-column: span 12 } }
+
+    .dish { background:#fff; border:1px solid #eee; padding:1rem; border-radius: var(--radius); display:flex; gap:1rem; align-items:flex-start; box-shadow: var(--shadow) }
+    .dish h3 { margin:.1rem 0 .4rem; font-size:1.05rem }
+    .price { font-weight:800; color:var(--brand) }
+    .badge { font-size:.8rem; padding:.2rem .5rem; border-radius:6px; background:#f1f5f9; color:#111; margin-left:.4rem }
+    .actions { display:flex; gap:.5rem; flex-wrap:wrap; margin-top:.5rem }
+    .btn { display:inline-flex; align-items:center; gap:.5rem; padding:.55rem .8rem; border-radius:10px; border:1px solid #eee; background:#fff; font-weight:600; cursor:pointer }
+    .btn.primary { background:var(--brand); color:white; border-color:transparent }
+    .btn.primary:hover { background:var(--brand-600) }
+
+    section { padding: 1.4rem 0 }
+    h2 { font-size:1.6rem; margin:.2rem 0 1rem }
+    .note { background:#fff; border:1px dashed #e5e7eb; padding: .8rem 1rem; border-radius:12px; color:#333 }
+    .status { display:flex; gap:.7rem; align-items:center; padding:.6rem .9rem; border-radius:999px; background:#ecfdf5; color:#065f46; width:max-content }
+    .status span { font-weight:700 }
+
+    /* Carrusel */
+    .carousel { position:relative; overflow:hidden; border-radius:18px; border:1px solid #eee; background:#fff; box-shadow: var(--shadow) }
+    .track { display:flex; transition: transform .6s ease; will-change:transform }
+    .slide { min-width:100%; display:grid; grid-template-columns: 1fr 1fr; gap:1rem; padding:1rem }
+    .slide img { width:100%; height:260px; object-fit:cover }
+    .controls { position:absolute; inset:0; display:flex; align-items:center; justify-content:space-between; pointer-events:none }
+    .controls button { pointer-events:auto; border:none; background:rgba(0,0,0,.45); color:#fff; width:42px; height:42px; border-radius:999px; display:grid; place-items:center; margin:0 .5rem }
+    .dots { position:absolute; bottom:.6rem; left:0; right:0; display:flex; justify-content:center; gap:.4rem }
+    .dots button { width:9px; height:9px; border-radius:999px; border:none; background:#e5e7eb }
+    .dots button[aria-current="true"]{ background:var(--brand) }
+    @media (max-width:900px){ .slide{ grid-template-columns:1fr } .slide img{ height:200px } }
+
+    footer { background:#0f172a; color:#e2e8f0; margin-top:2rem }
+    footer a { color:#93c5fd }
+    .footer-grid { display:grid; grid-template-columns: 1fr 1fr; gap:1rem; padding:1.2rem 0 }
+    @media (max-width:720px){ .footer-grid{ grid-template-columns: 1fr } }
+    .tiny { font-size:.9rem; color:#555 }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <img alt="Logo" src="./img/logo.png" />
+        <div>
+          <div style="font-size:1.05rem">Cocinando con Poly</div>
+          <div class="tiny">Sabor que conquista</div>
+        </div>
+      </div>
+      <a class="cta" id="btn-header" href="#">Pedir por WhatsApp</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero container">
+      <div>
+        <div class="status" id="stateBadge">● <span>Tomando pedidos para hoy</span></div>
+        <h1>Menú semanal con platos caseros, frescos y convenientes</h1>
+        <p class="tiny" style="max-width:56ch">Entregamos <strong>dentro del condominio</strong> entre 13:30 y 15:00. Reserva o pide el mismo día hasta agotar stock.</p>
+        <div class="chips">
+          <span class="chip">Depto 416 Torre B1</span>
+          <span class="chip">Previa reserva: Opciones vegetarianas</span>
+          <span class="chip">Transferencia / efectivo</span>
+          
+        </div>
+        <div class="note">💡 Paola Andrea Sánchez Torres RUT: 126342225 Mercado Pago Cuenta Vista Número de cuenta: 1051244960 polilla197417@gmail.com</em>.</div>
+        <div style="margin-top:1rem">
+          <a class="cta" id="btn-hero" href="#menu">Ver menú y pedir</a>
+        </div>
+      </div>
+      <div class="card">
+        <img src= "img/postre.png" alt="Platos caseros"  />
+      </div>
+    </section>
+
+    <!-- Banner Plato del Día -->
+    <section class="container" id="plato-del-dia"></section>
+
+    <!-- Carrusel de platos -->
+    <section class="container">
+      <h2>Recomendados de la semana</h2>
+      <div class="carousel" id="carousel">
+        <div class="track" id="track"></div>
+        <div class="controls">
+          <button id="prev" aria-label="Anterior">‹</button>
+          <button id="next" aria-label="Siguiente">›</button>
+        </div>
+        <div class="dots" id="dots"></div>
+      </div>
+    </section>
+
+    <!-- Menú semanal -->
+    <section class="container" id="menu">
+      <h2>Menú de la semana</h2>
+      <div class="tabs" id="tabs"></div>
+      <div id="dayContent" class="grid"></div>
+    </section>
+
+    <!-- Cómo funciona -->
+    <section class="container">
+      <h2>¿Cómo funciona?</h2>
+      <div class="grid">
+        <div class="col-4">
+          <div class="dish"><div>1️⃣</div><div><h3>Elige tu plato</h3><p class="tiny">Revisa el menú del día y selecciona tu opción favorita.</p></div></div>
+        </div>
+        <div class="col-4">
+          <div class="dish"><div>2️⃣</div><div><h3>Escríbenos por WhatsApp</h3><p class="tiny">Presiona “Pedir por WhatsApp” y envía tu pedido con tu torre y depto.</p></div></div>
+        </div>
+        <div class="col-4">
+          <div class="dish"><div>3️⃣</div><div><h3>Recibe y disfruta</h3><p class="tiny">Entregamos entre 13:30–15:00 dentro del condominio.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contacto -->
+    <section class="container" id="contacto">
+      <h2>Contacto</h2>
+      <div class="grid">
+        <div class="col-6">
+          <div class="note">
+            <p><strong>WhatsApp:</strong> <a id="waLink" href="#">+56 9 4295 5777</a></p>
+            <p class="tiny">Horario de atención: 10:00 a 16:00 (Lun–Vie)</p>
+            <p class="tiny">Ubicación: Condominio (entrega interna)</p>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="note">
+            <p class="tiny">¿Alergias o preferencias especiales? Escríbenos y lo consideramos cuando sea posible.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <div style="font-weight:700; font-size:1.05rem">Cocinando con Poly</div>
+        <div class="tiny">Hecho con ❤ en el condominio</div>
+      </div>
+      <div style="text-align:right">
+        <div class="tiny">© <span id="year"></span> Cocinando con Poly · Todos los derechos reservados.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // === CONFIGURACIÓN ===
+    const WHATSAPP_NUMBER = "+56942955777"; // número sin espacios
+    const HORARIO = { abre: "10:00", cierra: "16:00" };
+
+    // Menú semanal (edítalo cada semana)
+    const menuSemana = {
+  
+  Lunes:[{ nombre:"VEGETARIANO, Huevos, aceitunas, queso amarillo, rúcula, choclo, Tomate Cherry", precio:5000, img:"./img/vegetarianohuevoaceitunoquesoruculachoclo.jpg" }],
+  Martes:   [{ nombre:"Charquicán con huevos",    precio:5000, img:"./img/charquicanconhuevo_cocinandoconpoly.jpg" }],
+  Miércoles:    [{ nombre:"Pollo Arverjado con Puré", precio:5000, img:"./img/PolloArverjadoconpure.jpg" }],
+  Jueves:   [{ nombre:"Chapsui de pollo con Arroz Chaufán",    precio:5000, img:"./img/chapsuidePolloconArrozchaufan.jpg" }],
+  Viernes:  [{ nombre:"Carne mechada con puré", precio:5000, img:"./img/carnemechadaconpure_cocinandoconpoly.jpg" }]
+    };
+
+    // Utilidades
+    const $ = (sel, el=document) => el.querySelector(sel);
+    const $$ = (sel, el=document) => [...el.querySelectorAll(sel)];
+    const waText = (dia, plato) => encodeURIComponent(`Hola Poly! Quiero pedir *${plato}* para *${dia}*. Soy de la Torre/Depto: `);
+    const waBase = () => `https://wa.me/${WHATSAPP_NUMBER}`;
+
+    // Plato del día
+    function renderPlatoDelDia(){
+      const diasOrden = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
+      const hoyIdx = new Date().getDay();
+      const dia = diasOrden[hoyIdx] || "Lunes";
+      const mapDia = {"Lunes":"Lunes","Martes":"Martes","Miércoles":"Miércoles","Jueves":"Jueves","Viernes":"Viernes"};
+      const usable = mapDia[dia] || "Lunes";
+      const plato = (menuSemana[usable]||[])[0];
+      const cont = document.getElementById('plato-del-dia');
+      if(!plato){ cont.innerHTML = '<div class="note">Aún no hay plato del día configurado.</div>'; return; }
+      cont.innerHTML = `
+        <div class="banner-dia">
+          <img src="${plato.img}" alt="${plato.nombre}">
+          <div>
+            <div class="tiny">Plato del día – <strong>${usable}</strong></div>
+            <h3 style="margin:.2rem 0 .3rem">${plato.nombre}</h3>
+            <div class="precio">$${Intl.NumberFormat('es-CL').format(plato.precio)}</div>
+          </div>
+          <div style="margin-left:auto">
+            <a class="cta" href="${waBase()}?text=${waText(usable, plato.nombre)}" target="_blank" rel="noopener">Pedir ahora</a>
+          </div>
+        </div>`;
+    }
+
+    // Tabs menú
+    const tabsEl = $('#tabs');
+    const dayContent = $('#dayContent');
+    const dias = Object.keys(menuSemana);
+    dias.forEach((d,i)=>{ const b=document.createElement('button'); b.className='tab'; b.role='tab'; b.setAttribute('aria-selected', i===0?'true':'false'); b.textContent=d; b.addEventListener('click',()=>selectDay(d,b)); tabsEl.appendChild(b)});
+    function selectDay(dia, btn){ $$('.tab').forEach(t=>t.setAttribute('aria-selected','false')); btn.setAttribute('aria-selected','true'); renderDia(dia); location.hash = `#${encodeURIComponent(dia)}` }
+    function renderDia(dia){
+      const platos = menuSemana[dia]||[]; dayContent.innerHTML='';
+      if(!platos.length){ dayContent.innerHTML = `<p class="note col-12">Sin platos cargados para <strong>${dia}</strong>.</p>`; return; }
+      platos.forEach(p=>{ const card=document.createElement('div'); card.className='col-6'; card.innerHTML = `
+        <article class="dish">
+          <img src="${p.img}" alt="${p.nombre}" width="140" height="100" loading="lazy" />
+          <div>
+            <h3>${p.nombre} <span class="badge">${p.tags?.[0]||''}</span></h3>
+            <div class="price">$${Intl.NumberFormat('es-CL').format(p.precio)}</div>
+            <div class="actions">
+              <a class="btn primary" href="${waBase()}?text=${waText(dia, p.nombre)}" target="_blank" rel="noopener">📲 Pedir por WhatsApp</a>
+            </div>
+          </div>
+        </article>`; dayContent.appendChild(card); });
+    }
+
+    // Carrusel (con los primeros platos de cada día)
+    function renderCarousel(){
+      const track = document.getElementById('track');
+      const dots = document.getElementById('dots');
+      const slides = [];
+      Object.entries(menuSemana).forEach(([dia,platos])=>{ if(platos[0]) slides.push({dia, ...platos[0]}) });
+      slides.forEach((s,idx)=>{
+        const slide = document.createElement('div');
+        slide.className='slide';
+        slide.innerHTML = `
+          <img src="${s.img}" alt="${s.nombre}" />
+          <div style="display:flex; flex-direction:column; gap:.6rem; justify-content:center">
+            <div class="tiny">Recomendado de ${s.dia}</div>
+            <h3 style="margin:0">${s.nombre}</h3>
+            <div class="price">$${Intl.NumberFormat('es-CL').format(s.precio)}</div>
+            <div>
+              <a class="cta" href="${waBase()}?text=${waText(s.dia, s.nombre)}" target="_blank" rel="noopener">Quiero este</a>
+            </div>
+          </div>`;
+        track.appendChild(slide);
+        const d = document.createElement('button'); d.setAttribute('aria-label',`Ir a slide ${idx+1}`); d.addEventListener('click',()=>go(idx)); dots.appendChild(d);
+      });
+      let index = 0, N = slides.length, timer;
+      function go(i){ index = (i+N)%N; track.style.transform = `translateX(-${index*100}%)`; $$('#dots button').forEach((b,j)=>b.setAttribute('aria-current', j===index?'true':'false')); reset(); }
+      function next(){ go(index+1) } function prev(){ go(index-1) }
+      function reset(){ clearInterval(timer); timer = setInterval(next, 4500) }
+      $('#next').onclick = next; $('#prev').onclick = prev; go(0);
+    }
+
+    // Estado horario + links generales
+    function ahoraEnHorario(){
+      const [ah, am] = new Date().toLocaleTimeString('es-CL',{hour12:false}).split(':');
+      const ahora = Number(ah)*60 + Number(am);
+      const [abH, abM] = HORARIO.abre.split(':').map(Number);
+      const [ciH, ciM] = HORARIO.cierra.split(':').map(Number);
+      const abre = abH*60 + abM; const cierra = ciH*60 + ciM;
+      return ahora>=abre && ahora<=cierra;
+    }
+    function updateStateBadge(){
+      const badge = document.getElementById('stateBadge');
+      if(ahoraEnHorario()){
+        badge.style.background = '#ecfdf5'; badge.style.color = '#065f46'; badge.innerHTML = '● <span>Tomando pedidos ahora</span>';
+      } else {
+        badge.style.background = '#fff7ed'; badge.style.color = '#7c2d12'; badge.innerHTML = '● <span>Fuera de horario, deja tu reserva</span>';
+      }
+    }
+    function setMainWaLinks(){
+      const link = `${waBase()}?text=${encodeURIComponent('Hola Poly, me gustaría pedir del menú de esta semana. ')}`;
+      document.getElementById('waLink').href = link;
+      document.getElementById('btn-header').href = link;
+      document.getElementById('btn-hero').href = '#menu';
+    }
+
+    // Init
+    (function init(){
+      setMainWaLinks();
+      updateStateBadge();
+      renderPlatoDelDia();
+      renderCarousel();
+      const hashDia = decodeURIComponent(location.hash.replace('#',''));
+      const diasKeys = Object.keys(menuSemana);
+      const first = diasKeys.includes(hashDia) ? hashDia : diasKeys[0];
+      const firstBtn = $$('.tab')[diasKeys.indexOf(first)] || $$('.tab')[0];
+      selectDay(first, firstBtn);
+      document.getElementById('year').textContent = new Date().getFullYear();
+      setInterval(updateStateBadge, 60*1000);
+    })();
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
