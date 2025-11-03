@@ -248,10 +248,10 @@
     // Menú real de la semana
     let menuSemana = {
       "Lunes":     [{ nombre:"Charquicán con huevos", precio:PRECIO_PLATO, tags:["Casero"], img:"./img/charquicanconhuevo_cocinandoconpoly.jpg" }],
-      "Martes":    [{ nombre:"Chapsui de pollo con arroz Chaufan", precio:PRECIO_PLATO, tags:["Gourmet"], img:"./img/chapsuidePolloconArrozchaufan.jpg" }],
-      "Miércoles": [{ nombre:"Filete de pechuga a la plancha con salsa de champiñon y papitas en cubos", precio:PRECIO_PLATO, tags:["Gourmet"], img:"./img/filetepechugasalsachampinion.png" }],
-      "Jueves":    [{ nombre:"Pollo arverjado con arroz primavera", precio:PRECIO_PLATO, tags:["Horno"], img:"./img/cuartopolloconarrozprimavera.png" }],
-      "Viernes":   [{ nombre:"Viernes festivo sin menú", tags:["Marino"], img:"./img/favicon-512.png" }]
+      "Martes":    [{ nombre:"Cubitos de pollo con quinoa acompañado con papas doradas", precio:PRECIO_PLATO, tags:["Gourmet"], img:"./img/cubitosdepollo.jpg" }],
+      "Miércoles": [{ nombre:"Fasulia con arroz Arabe", precio:PRECIO_PLATO, tags:["Gourmet"], img:"./img/fasulia.png" }],
+      "Jueves":    [{ nombre:"Filete de pechuga a la plancha con salsa de champiñon y papitas doradas", precio:PRECIO_PLATO, tags:["Horno"], img:"./img/filetedepechuga.png" }],
+      "Viernes":   [{ nombre:"Panqueques de verdura con mix verde y tomate Cherry",precio:PRECIO_PLATO, tags:["Panqueques"], img:"./img/panqueques.png" }]
     };
 
     // Postres (placeholder, reemplaza cuando tengas la lista final)
@@ -336,6 +336,18 @@
               </div>
             </div>
           </article>`;
+        
+        // Asegurar href correcto en el botón WA por plato (menú por día)
+        try {
+          const waMsg = `Hola Poly! Me interesa el *${p.nombre}* para *${dia}*. Torre/Depto:`;
+          const waLink = col.querySelector('a.btn.primary');
+          if (waLink) {
+            waLink.href = `${waBase()}?text=${waText(waMsg)}`;
+            waLink.target = "_blank";
+            waLink.rel = "noopener";
+          }
+        } catch(e) { /* noop */ }
+
         cont.appendChild(col);
       });
     }
@@ -433,6 +445,23 @@
       document.getElementById('waFoot').href = `${waBase()}?text=${txt}`;
       document.getElementById('fabWa').href = `${waBase()}?text=${txt}`;
     }
+
+    
+// Delegado global para abrir WhatsApp en tarjetas de platos por día (fallback)
+document.addEventListener('click', (e) => {
+  const a = e.target.closest('a.btn.primary');
+  if (!a) return;
+  const card = a.closest('.dish.card');
+  if (!card) return;
+  const href = a.getAttribute('href') || '';
+  if (href && href !== '#') return;
+  e.preventDefault();
+  const title = card.querySelector('h3')?.textContent.trim() || '';
+  const selected = document.querySelector('#tabs .chip[aria-selected="true"]');
+  const day = selected ? selected.textContent.trim() : '';
+  const msg = `Hola Poly! Me interesa el *${title}* para *${day}*. Torre/Depto:`;
+  window.open(`${waBase()}?text=${waText(msg)}`, '_blank', 'noopener');
+});
 
     // INIT
     (function init(){
