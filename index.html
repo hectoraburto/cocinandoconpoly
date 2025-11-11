@@ -112,6 +112,22 @@
     "offers": [{ "@type": "Offer", "name": "Almuerzo del día", "price": "5000", "priceCurrency": "CLP", "availability": "https://schema.org/InStock" }]
   }
   </script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+<style>
+
+/* Estilos mínimos para tarjetas de postres si faltan */
+.card-postre { background:#fff; border-radius:14px; overflow:hidden; box-shadow:0 10px 24px rgba(0,0,0,.06); display:flex; flex-direction:column; }
+.card-postre img { width:100%; height:auto; display:block; }
+.card-postre__body { padding:.75rem 1rem; display:flex; align-items:center; justify-content:space-between; gap:.5rem; }
+.card-postre__info { display:flex; flex-direction:column; gap:.25rem; }
+.card-postre h3 { margin:0; font-size:1rem; }
+.card-postre .precio { margin:0; font-weight:700; }
+.btn-wa { text-decoration:none; padding:.5rem .75rem; border-radius:999px; background:#25D366; color:#fff; font-weight:700; white-space:nowrap; }
+.btn-wa:hover { filter:brightness(0.95); }
+
+</style>
 </head>
 <body>
   <!-- Header -->
@@ -185,9 +201,53 @@
 
     <!-- Postres -->
     <section class="container" id="postres">
-      <h2>Postres</h2>
-      <div class="grid" id="postresGrid"></div>
-    </section>
+  <h2>Postres</h2>
+  
+<div class="swiper postres-swiper">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide">
+<article class="card-postre">
+  <img src="img/postres/leche-asada-1000.jpg" alt="Leche asada casera en vaso individual" loading="lazy">
+  <div class="card-postre__body">
+    <div class="card-postre__info">
+      <h3>Leche asada</h3>
+      <p class="precio">$1.000</p>
+    </div>
+    <a class="btn-wa" href="https://wa.me/56942955777?text=Hola%20Cocinando%20con%20Poly%2C%20quiero%20pedir%20el%20postre%20Leche%20asada%20por%20favor." target="_blank" rel="noopener">Pedir por WhatsApp</a>
+  </div>
+</article>
+</div>
+<div class="swiper-slide">
+<article class="card-postre">
+  <img src="img/postres/bavarois-2000.jpg" alt="Bavarois cremoso sabor frutilla en vaso individual" loading="lazy">
+  <div class="card-postre__body">
+    <div class="card-postre__info">
+      <h3>Bavarois</h3>
+      <p class="precio">$2.000</p>
+    </div>
+    <a class="btn-wa" href="https://wa.me/56942955777?text=Hola%20Cocinando%20con%20Poly%2C%20quiero%20pedir%20el%20postre%20Bavarois%20por%20favor." target="_blank" rel="noopener">Pedir por WhatsApp</a>
+  </div>
+</article>
+</div>
+<div class="swiper-slide">
+<article class="card-postre">
+  <img src="img/postres/pie-limon-2000.jpg" alt="Pie de limón en vaso individual con ralladura de limón" loading="lazy">
+  <div class="card-postre__body">
+    <div class="card-postre__info">
+      <h3>Pie de limón</h3>
+      <p class="precio">$2.000</p>
+    </div>
+    <a class="btn-wa" href="https://wa.me/56942955777?text=Hola%20Cocinando%20con%20Poly%2C%20quiero%20pedir%20el%20postre%20Pie%20de%20lim%C3%B3n%20por%20favor." target="_blank" rel="noopener">Pedir por WhatsApp</a>
+  </div>
+</article>
+</div>
+  </div>
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+  <div class="swiper-pagination"></div>
+</div>
+
+</section>
 
     <!-- Vegetarianos (personaliza hasta 4 ingredientes) -->
     <section class="container" id="vegetariano">
@@ -471,5 +531,34 @@ document.addEventListener('click', (e) => {
       document.getElementById('year').textContent = new Date().getFullYear();
     })();
   </script>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+  (function(){
+    var el = document.querySelector('.postres-swiper');
+    if (!el) return;
+    new Swiper('.postres-swiper', {
+      slidesPerView: 1.1,
+      spaceBetween: 12,
+      loop: false,
+      autoplay: { delay: 3500, disableOnInteraction: false },
+      navigation: {
+        nextEl: '.postres-swiper .swiper-button-next',
+        prevEl: '.postres-swiper .swiper-button-prev',
+      },
+      pagination: {
+        el: '.postres-swiper .swiper-pagination',
+        clickable: true,
+      },
+      breakpoints: {
+        640:  { slidesPerView: 1.2, spaceBetween: 16 },
+        768:  { slidesPerView: 2,   spaceBetween: 16 },
+        1024: { slidesPerView: 3,   spaceBetween: 20 }
+      }
+    });
+  })();
+</script>
+
 </body>
 </html>
