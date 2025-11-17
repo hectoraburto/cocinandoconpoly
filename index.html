@@ -464,13 +464,13 @@
     }
 
     // Postres
-    //function renderPostres(){
-    //  const grid=$('#postresGrid'); grid.innerHTML='';
-    //  postres.forEach(p=>{
-   //     const col=document.createElement('div'); col.className='col-4';
-   //     col.innerHTML=`<article class="card"><img src="${p.img}" alt="${p.nombre}"/><h3 style="margin:.6rem 0 .2rem">${p.nombre}</h3><div class="price">${precioFmt(p.precio)}</div><div style="margin-top:.5rem"><a class="btn primary" target="_blank" rel="noopener" href="${waBase()}?text=${waText(`Hola Poly! Quiero pedir *${p.nombre}*. Torre/Depto:`)}">📲 Pedir por WhatsApp</a></div></article>`;
-   //     grid.appendChild(col);
-   //   });
+    function renderPostres(){
+     const grid=$('#postresGrid'); grid.innerHTML='';
+    postres.forEach(p=>{
+     const col=document.createElement('div'); col.className='col-4';
+     col.innerHTML=`<article class="card"><img src="${p.img}" alt="${p.nombre}"/><h3 style="margin:.6rem 0 .2rem">${p.nombre}</h3><div class="price">${precioFmt(p.precio)}</div><div style="margin-top:.5rem"><a class="btn primary" target="_blank" rel="noopener" href="${waBase()}?text=${waText(`Hola Poly! Quiero pedir *${p.nombre}*. Torre/Depto:`)}">📲 Pedir por WhatsApp</a></div></article>`;
+      grid.appendChild(col);
+    });
     }
 
     // Vegetarianos
