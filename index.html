@@ -3,562 +3,247 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cocinando con Poly — Sabor que conquista</title>
-  <meta name="description" content="Menú semanal de almuerzos caseros, postres y opción vegetariana personalizada TODOS LOS DIAS. Pide por WhatsApp dentro del condominio." />
-  <meta name="theme-color" content="#f97316" />
-
-  <!-- Open Graph / Twitter -->
-  <meta property="og:title" content="Cocinando con Poly — Almuerzos caseros en tu condominio" />
-  <meta property="og:description" content="Menú semanal, platos caseros, postres y vegetariano. Pide por WhatsApp." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://hectoraburto.github.io/cocinandoconpoly/" />
-  <meta property="og:image" content="https://hectoraburto.github.io/cocinandoconpoly/img/og.png?v=2" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Cocinando con Poly — Platos caseros en el condominio" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Cocinando con Poly — Almuerzos caseros en tu condominio" />
-  <meta name="twitter:description" content="Menú semanal, platos caseros, postres y vegetariano. Pide por WhatsApp." />
-  <meta name="twitter:image" content="https://hectoraburto.github.io/cocinandoconpoly/img/og.png?v=2" />
-  <link rel="canonical" href="https://hectoraburto.github.io/cocinandoconpoly/" />
-
-  <!-- Icons / PWA -->
+  <title>Cocinando con Poly | Menú del día</title>
+  <meta name="description" content="Pide el menú del día de Cocinando con Poly por WhatsApp. Platos a $5.000 y consulta por postres disponibles." />
+  <meta name="theme-color" content="#ea580c" />
   <link rel="icon" href="./favicon.ico" sizes="any" />
   <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon-16.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="./img/apple-touch-icon.png" />
-  <link rel="manifest" href="./site.webmanifest" />
-
   <style>
-    :root{ --brand:#f97316; --brand-600:#ea580c; --ink:#141414; --muted:#6b7280; --bg:#fffdf9; --card:#ffffff; --shadow:0 10px 25px rgba(0,0,0,.07); --radius:16px; --header-bg:#fff7ed; --header-fg:#0f172a }
+    :root{
+      --brand:#ea580c;
+      --brand-dark:#c2410c;
+      --ink:#1f2937;
+      --muted:#6b7280;
+      --bg:#fff7ed;
+      --card:#ffffff;
+      --line:#fed7aa;
+      --ok:#25D366;
+      --shadow:0 18px 40px rgba(0,0,0,.10);
+      --radius:22px;
+    }
     *{box-sizing:border-box}
-    html,body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Inter,Arial;color:var(--ink);background:var(--bg)}
-    a{color:var(--brand-600);text-decoration:none}
-    img{max-width:100%;height:auto;border-radius:var(--radius)}
-    .container{width:min(1100px,92%);margin-inline:auto}
-    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--ink);
+      background:
+        linear-gradient(rgba(255,247,237,.88), rgba(255,247,237,.92)),
+        url('./img/banner_platos_cociandoconpoly.png') center/cover fixed;
+    }
+    a{text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{width:min(1120px,92%);margin:0 auto}
+    .topbar{
+      position:sticky;top:0;z-index:20;
+      background:rgba(255,255,255,.82);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(234,88,12,.12);
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.85rem 0}
+    .brand{display:flex;align-items:center;gap:1rem;font-weight:800;color:#111827}
+    .brand img{width:76px;height:76px;border-radius:18px;object-fit:contain;background:#fff;padding:.35rem;box-shadow:0 20px 40px rgba(0,0,0,.16)}
+    .nav-links{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+    .nav-links a:not(.btn){color:#374151;font-weight:600}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:.55rem;
+      text-align:center;
+      padding:.9rem 1.2rem;border-radius:999px;font-weight:800;border:none;cursor:pointer;
+      transition:transform .18s ease, background .18s ease, box-shadow .18s ease;
+      box-shadow:var(--shadow);
+    }
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{background:var(--brand);color:#fff}
+    .btn-primary:hover{background:var(--brand-dark)}
+    .btn-wa{background:var(--ok);color:#fff}
 
-    header{position:sticky;top:0;z-index:50;background:var(--header-bg);color:var(--header-fg);border-bottom:1px solid #e5e7eb;backdrop-filter:saturate(1.1) blur(6px)}
-    .nav{display:flex;align-items:center;justify-content:space-between;padding:.8rem 0}
-    .brand{display:flex;align-items:center;gap:.7rem;font-weight:800}
-    .brand img{display:none} /* logo ahora sólo en el footer */
-    .menu{display:flex;gap:1rem;align-items:center}
-    .cta{display:inline-flex;align-items:center;gap:.5rem;background:var(--brand);color:#fff;padding:.55rem .9rem;border-radius:999px;font-weight:700;box-shadow:var(--shadow)}
-    .cta:hover{background:var(--brand-600)}
+    .hero{padding:3.5rem 0 2rem}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:1.4rem;align-items:center}
+    .card{
+      background:rgba(255,255,255,.94);
+      border:1px solid rgba(234,88,12,.14);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+    .hero-copy{padding:2rem}
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:.5rem;
+      padding:.45rem .8rem;border-radius:999px;background:#fff1e6;color:var(--brand-dark);
+      font-weight:800;font-size:.95rem;border:1px solid #fdba74;
+    }
+    h1{font-size:clamp(2rem,5vw,4rem);line-height:1.02;margin:.9rem 0 1rem}
+    .lead{font-size:1.12rem;line-height:1.6;color:#374151;max-width:56ch}
+    .price-box{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem;margin:1.4rem 0 1.6rem;
+    }
+    .mini{
+      padding:1rem;border-radius:18px;background:#fff7ed;border:1px solid var(--line);text-align:center;
+    }
+    .mini strong{display:block;font-size:1.45rem;color:var(--brand-dark)}
+    .mini span{display:block;color:var(--muted);margin-top:.25rem;font-size:.95rem}
+    .cta-row{display:flex;gap:.85rem;flex-wrap:wrap}
 
-    section{padding:1.6rem 0}
-    h1{font-size:clamp(1.8rem,2.5vw + 1rem,2.8rem);line-height:1.1;margin:.2rem 0 .8rem}
-    h2{font-size:1.6rem;margin:.2rem 0 1rem}
-    .note{background:#fff;border:1px dashed #e5e7eb;padding:.8rem 1rem;border-radius:12px;color:#374151}
-    .chips{display:flex;gap:.5rem;flex-wrap:wrap;margin:.8rem 0 1rem}
-    .chip{background:#fff;border:1px solid #eee;padding:.35rem .6rem;border-radius:999px;font-size:.9rem;color:#374151}
+    .hero-visual{padding:1rem}
+    .hero-visual img{width:100%;height:100%;max-height:520px;object-fit:cover;border-radius:18px}
 
-    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem}
-    .col-12{grid-column:span 12} .col-6{grid-column:span 6} .col-4{grid-column:span 4}
-    @media (max-width:920px){.col-6,.col-4{grid-column:span 12}}
+    section{padding:1rem 0 1.2rem}
+    .section-title{font-size:1.7rem;margin:0 0 1rem}
+    .info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+    .info-card{padding:1.3rem}
+    .info-card h3{margin:.1rem 0 .5rem}
+    .info-card p{margin:0;color:#4b5563;line-height:1.55}
 
-    .card{background:var(--card);border:1px solid #eee;padding:1rem;border-radius:var(--radius);box-shadow:var(--shadow)}
-    .dish{display:flex;gap:1rem}
-    .price{font-weight:800;color:var(--brand)}
-    .badge{font-size:.8rem;padding:.18rem .5rem;border-radius:6px;background:#f1f5f9;color:#111;margin-left:.35rem}
-    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.5rem .8rem;border-radius:10px;border:1px solid #e5e7eb;background:#fff;font-weight:600;cursor:pointer}
-    .btn.primary{background:var(--brand);color:#fff;border-color:transparent}.btn.primary:hover{background:var(--brand-600)}
+    .cta-banner{padding:1.5rem;background:linear-gradient(135deg,#ea580c,#fb923c);color:#fff}
+    .cta-banner p{margin:.4rem 0 0;opacity:.96;line-height:1.55}
+    .cta-banner .btn{box-shadow:none;margin-top:1rem}
 
-    /* Carrusel */
-    .carousel{position:relative;overflow:hidden;border-radius:var(--radius);border:1px solid #eee;background:#fff;box-shadow:var(--shadow)}
-    .track{display:flex;transition:transform .6s ease;will-change:transform}
-    .slide{min-width:100%;display:grid;grid-template-columns:1fr 1fr;gap:1rem;padding:1rem}
-    .slide img{width:100%;height:240px;object-fit:cover}
-    .controls{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;pointer-events:none}
-    .controls button{pointer-events:auto;border:none;background:rgba(0,0,0,.45);color:#fff;width:42px;height:42px;border-radius:999px;display:grid;place-items:center;margin:0 .5rem}
-    .dots{position:absolute;bottom:.6rem;left:0;right:0;display:flex;justify-content:center;gap:.4rem}
-    .dots button{width:9px;height:9px;border-radius:999px;border:none;background:#e5e7eb}
-    .dots button[aria-selected="true"]{background:var(--brand)}
-    @media (max-width:900px){.slide{grid-template-columns:1fr}.slide img{height:200px}}
+    footer{padding:1.6rem 0 2.4rem;color:#4b5563}
+    .footer-box{padding:1.2rem 1.4rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
 
-    /* Efecto visual en cartas del menú */
-    .dish.card{position:relative;border:1px solid #eee;transition:transform .2s ease, box-shadow .2s ease}
-    .dish.card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(0,0,0,.12)}
-    .dish.card::after{content:"";position:absolute;inset:0;border-radius:var(--radius);padding:1px;background:linear-gradient(135deg, rgba(249,115,22,.45), rgba(234,88,12,.1));-webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+    .fab{
+      position:fixed;right:18px;bottom:18px;z-index:30;
+      width:64px;height:64px;border-radius:999px;background:var(--ok);color:#fff;
+      display:inline-flex;align-items:center;justify-content:center;font-weight:900;
+      box-shadow:0 16px 32px rgba(0,0,0,.2)
+    }
+    .wa-icon{width:20px;height:20px;fill:currentColor;flex:0 0 auto}
+    .fab .wa-icon{width:28px;height:28px}
 
-    /* Destacar sección Vegetariano */
-    #vegetariano{background:#fffbeb;border-top:1px solid #fde68a;border-bottom:1px solid #fde68a}
-    #vegetariano h2{display:flex;align-items:center;gap:.5rem}
-    #vegetariano h2::after{content:"★ Destacado";font-size:.9rem;background:#f59e0b;color:#111;padding:.2rem .5rem;border-radius:6px}
-
-    /* Footer */
-    footer{background:#0f172a;color:#e2e8f0;margin-top:2rem}
-    footer a{color:#93c5fd}
-    .footer-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;padding:1.1rem 0}
-    @media (max-width:720px){.footer-grid{grid-template-columns:1fr}}
-
-    /* FAB WhatsApp (móvil) */
-    .fab-wa{position:fixed;right:16px;bottom:18px;z-index:999;display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:999px;background:#25D366;color:#fff;font-weight:700;text-decoration:none;box-shadow:0 10px 25px rgba(0,0,0,.18)}
-    @media (min-width:900px){.fab-wa{display:none}}
+    @media (max-width: 920px){
+      .hero-grid,.info-grid,.price-box{grid-template-columns:1fr}
+      .hero{padding-top:2rem}
+      .hero-copy{padding:1.35rem}
+      .nav{align-items:flex-start;flex-direction:column}
+      .nav-links{width:100%}
+      .nav-links a:not(.btn){display:none}
+      .footer-box{align-items:flex-start;flex-direction:column}
+    }
   </style>
-
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "FoodEstablishment",
     "name": "Cocinando con Poly",
-    "url": "https://hectoraburto.github.io/cocinandoconpoly/",
-    "image": "https://hectoraburto.github.io/cocinandoconpoly/img/og.png",
     "telephone": "+56 9 4295 5777",
     "servesCuisine": ["Comida casera", "Chilena"],
-    "priceRange": "$",
-    "areaServed": "Entrega interna en condominio",
-    "hasMenu": "https://hectoraburto.github.io/cocinandoconpoly/#menu",
-    "offers": [{ "@type": "Offer", "name": "Almuerzo del día", "price": "5000", "priceCurrency": "CLP", "availability": "https://schema.org/InStock" }]
+    "offers": [{
+      "@type": "Offer",
+      "name": "Menú del día",
+      "price": "5000",
+      "priceCurrency": "CLP"
+    }]
   }
   </script>
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-
-<style>
-
-/* Estilos mínimos para tarjetas de postres si faltan */
-.card-postre { background:#fff; border-radius:14px; overflow:hidden; box-shadow:0 10px 24px rgba(0,0,0,.06); display:flex; flex-direction:column; }
-.card-postre img { width:100%; height:auto; display:block; }
-.card-postre__body { padding:.75rem 1rem; display:flex; align-items:center; justify-content:space-between; gap:.5rem; }
-.card-postre__info { display:flex; flex-direction:column; gap:.25rem; }
-.card-postre h3 { margin:0; font-size:1rem; }
-.card-postre .precio { margin:0; font-weight:700; }
-.btn-wa { text-decoration:none; padding:.5rem .75rem; border-radius:999px; background:#25D366; color:#fff; font-weight:700; white-space:nowrap; }
-.btn-wa:hover { filter:brightness(0.95); }
-
-</style>
 </head>
 <body>
-  <!-- Header -->
-  <header>
+  <header class="topbar">
     <div class="container nav">
-      <div class="brand">
+      <a class="brand" href="#inicio">
+        <img src="./img/logo.png" alt="Logo Cocinando con Poly" />
         <div>
-          <div style="font-size:1.05rem">Cocinando con Poly</div>
-          <div style="font-size:.9rem;color:#475569">Sabor que conquista</div>
+          <div>Cocinando con Poly</div>
+          <div style="font-size:.98rem;font-weight:700;color:#6b7280">Comida casera • Menú del día • Postres</div>
         </div>
-      </div>
-      <nav class="menu" aria-label="Navegación principal">
-        <a href="#menu">Menú</a>
+      </a>
+      <nav class="nav-links" aria-label="Principal">
+        <a href="#menu">Menú del día</a>
         <a href="#postres">Postres</a>
-        <a href="#vegetariano">Vegetarianos</a>
-        <a class="cta" id="btnHeader" href="#">Pedir por WhatsApp</a>
+        <a href="#contacto">Contacto</a>
+        <a class="btn btn-primary" id="ctaTop" target="_blank" rel="noopener"><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.52 3.48A11.8 11.8 0 0 0 12.12 0C5.54 0 .19 5.35.19 11.93c0 2.1.55 4.16 1.6 5.98L0 24l6.27-1.64a11.9 11.9 0 0 0 5.85 1.5h.01c6.58 0 11.93-5.35 11.93-11.93 0-3.19-1.24-6.19-3.54-8.45ZM12.13 21.84h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.72.98 1-3.62-.24-.37a9.9 9.9 0 0 1-1.53-5.31C2.23 6.46 6.66 2.03 12.12 2.03c2.65 0 5.14 1.03 7.01 2.91a9.84 9.84 0 0 1 2.91 7c0 5.46-4.44 9.9-9.91 9.9Zm5.43-7.43c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.47-2.4-1.49-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.47.13-.62.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.08-.8.37-.27.3-1.04 1.02-1.04 2.49 0 1.47 1.07 2.89 1.22 3.09.15.2 2.1 3.21 5.1 4.5.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.42.25-.69.25-1.29.17-1.42-.08-.12-.28-.2-.57-.35Z"/></svg>Pedir ahora</a>
       </nav>
     </div>
   </header>
 
-  <main>
-    <!-- HERO con imagen vegetariana -->
-    <section class="container" id="hero">
-      <div class="grid">
-        <div class="col-6">
-          <div class="note" id="stateBadge">● <strong>Tomando pedidos ahora</strong></div>
-          <h1>Menú semanal con platos caseros, postres y opción vegetariana personalizada con base lechuga y rucula</h1>
-          <p style="color:var(--muted);max-width:56ch">Entrega <strong>dentro del condominio</strong> entre 13:30 y 19:00. Reserva con anticipación o pide el mismo día hasta agotar stock.</p>
-          <div class="chips">
-          <span class="chip">Depto 416 Torre B1</span>
-          <span class="chip">Vegetarioanos TODOS LOS DIAS</span>
-          <span class="chip">Transferencia / efectivo</span>
-          
-        </div>
-        <div class="note">💡 Paola Andrea Sánchez Torres RUT: 126342225 Mercado Pago Cuenta Vista Número de cuenta: 1051244960 polilla197417@gmail.com</em>.</div>
-        <div style="margin-top:1rem">
-          <a class="cta" id="btn-hero" href="#menu">Ver menú y pedir</a>
-        </div>
-      </div>
-        <div class="col-6">
-          <div class="card">
-            <img src="./img/vegetarianohuevoaceitunoquesoruculachoclo.jpg" alt="Oferta vegetariana: con base lechuga y rucula, elige 4 ingredientes" />
-          </div>
-        </div>
-      </div>
-    </section>
+  <main id="inicio">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="card hero-copy">
+          <div class="eyebrow">Pedidos por WhatsApp</div>
+          <h1>¿Tienes hambre? Escríbenos por el <span style="color:var(--brand)">menú del día</span>.</h1>
+          <p class="lead">En <strong>Cocinando con Poly</strong> preparamos platos caseros listos para disfrutar. Cada plato del menú del día tiene un valor de <strong>$5.000</strong>. También puedes <strong>consultar por postres disponibles</strong> directamente por WhatsApp.</p>
 
-    <!-- Banner Plato del día -->
-    <section class="container" id="platoDelDia"></section>
-
-    <!-- Carrusel recomendados -->
-    <section class="container">
-      <h2>Recomendados de la semana</h2>
-      <div class="carousel" id="carousel" role="region" aria-label="Carrusel de recomendados">
-        <div class="track" id="track"></div>
-        <div class="controls">
-          <button id="prev" aria-label="Anterior" aria-controls="track">‹</button>
-          <button id="next" aria-label="Siguiente" aria-controls="track">›</button>
-        </div>
-        <div class="dots" id="dots" role="tablist" aria-label="Páginas del carrusel"></div>
-        <div id="carouselLive" class="sr-only" aria-live="polite"></div>
-      </div>
-    </section>
-
-    <!-- Menú semanal -->
-    <section class="container" id="menu">
-      <h2>Menú de Lunes a Viernes</h2>
-      <div class="chips" id="tabs"></div>
-      <div class="grid" id="dayContent"></div>
-    </section>
-
-    <!-- Postres -->
-    <section class="container" id="postres">
-  <h2>Postres</h2>
-  
-<div class="swiper postres-swiper">
-  <div class="swiper-wrapper">
-    <div class="swiper-slide">
-<article class="card-postre">
-  <img src="img/postres/leche-asada-1000.jpg" alt="Leche asada casera en vaso individual" loading="lazy">
-  <div class="card-postre__body">
-    <div class="card-postre__info">
-      <h3>Leche asada</h3>
-      <p class="precio">$1.000</p>
-    </div>
-    <a class="btn-wa" href="https://wa.me/56942955777?text=Hola%20Cocinando%20con%20Poly%2C%20quiero%20pedir%20el%20postre%20Leche%20asada%20por%20favor." target="_blank" rel="noopener">Pedir por WhatsApp</a>
-  </div>
-</article>
-</div>
-<div class="swiper-slide">
-<article class="card-postre">
-  <img src="img/postres/bavarois-2000.jpg" alt="Bavarois cremoso sabor frutilla en vaso individual" loading="lazy">
-  <div class="card-postre__body">
-    <div class="card-postre__info">
-      <h3>Bavarois</h3>
-      <p class="precio">$2.000</p>
-    </div>
-    <a class="btn-wa" href="https://wa.me/56942955777?text=Hola%20Cocinando%20con%20Poly%2C%20quiero%20pedir%20el%20postre%20Bavarois%20por%20favor." target="_blank" rel="noopener">Pedir por WhatsApp</a>
-  </div>
-</article>
-</div>
-<div class="swiper-slide">
-<article class="card-postre">
-  <img src="img/postres/pie-limon-2000.jpg" alt="Pie de limón en vaso individual con ralladura de limón" loading="lazy">
-  <div class="card-postre__body">
-    <div class="card-postre__info">
-      <h3>Pie de limón</h3>
-      <p class="precio">$2.000</p>
-    </div>
-    <a class="btn-wa" href="https://wa.me/56942955777?text=Hola%20Cocinando%20con%20Poly%2C%20quiero%20pedir%20el%20postre%20Pie%20de%20lim%C3%B3n%20por%20favor." target="_blank" rel="noopener">Pedir por WhatsApp</a>
-  </div>
-</article>
-</div>
-  </div>
-  <div class="swiper-button-prev"></div>
-  <div class="swiper-button-next"></div>
-  <div class="swiper-pagination"></div>
-</div>
-
-</section>
-    <!-- Vegetarianos (personaliza hasta 4 ingredientes) -->
-    <section class="container" id="vegetariano">
-      <h2>Vegetarianos — arma tu plato con base lechuga y rucula (máx. 4 ingredientes)</h2>
-      <div class="grid">
-        <div class="col-6">
-          <div class="card">
-            <p style="margin:.2rem 0 1rem;color:var(--muted)">Marca hasta <strong>4</strong> ingredientes:</p>
-            <form id="vegForm" class="grid" style="grid-template-columns:repeat(2,1fr);gap:.6rem"></form>
-            <div class="note" style="margin-top:1rem">
-              <div><strong id="countSel">0</strong>/4 seleccionados</div>
-              <label for="vegNotes" style="display:block;margin-top:.6rem;font-weight:600">Comentarios / Sugerencias</label>
-              <textarea id="vegNotes" rows="3" style="width:100%;padding:.6rem;border-radius:10px;border:1px solid #e5e7eb" placeholder="Me comentas el horario que lo necesitas"></textarea>
-              <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.8rem">
-                <a class="btn primary" id="vegWALink" href="#" aria-disabled="true">📲 Pedir por WhatsApp</a>
-                <button class="btn" id="vegClear" type="button">Limpiar selección</button>
-              </div>
+          <div class="price-box" id="menu">
+            <div class="mini">
+              <strong>$5.000</strong>
+              <span>Valor por plato</span>
+            </div>
+            <div class="mini">
+              <strong>WhatsApp</strong>
+              <span>Haz tu pedido en un clic</span>
+            </div>
+            <div class="mini" id="postres">
+              <strong>Postres</strong>
+              <span>Consultar disponibilidad</span>
             </div>
           </div>
-        </div>
-        <div class="col-6">
-          <div class="card">
-            <img src="./img/cuatroingredientres.png" alt="Ensalada vegetariana" />
-            <p class="sr-only">Imagen referencial de un plato vegetariano</p>
+
+          <div class="cta-row">
+            <a class="btn btn-wa" id="ctaHeroMenu" target="_blank" rel="noopener"><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.52 3.48A11.8 11.8 0 0 0 12.12 0C5.54 0 .19 5.35.19 11.93c0 2.1.55 4.16 1.6 5.98L0 24l6.27-1.64a11.9 11.9 0 0 0 5.85 1.5h.01c6.58 0 11.93-5.35 11.93-11.93 0-3.19-1.24-6.19-3.54-8.45ZM12.13 21.84h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.72.98 1-3.62-.24-.37a9.9 9.9 0 0 1-1.53-5.31C2.23 6.46 6.66 2.03 12.12 2.03c2.65 0 5.14 1.03 7.01 2.91a9.84 9.84 0 0 1 2.91 7c0 5.46-4.44 9.9-9.91 9.9Zm5.43-7.43c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.47-2.4-1.49-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.47.13-.62.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.08-.8.37-.27.3-1.04 1.02-1.04 2.49 0 1.47 1.07 2.89 1.22 3.09.15.2 2.1 3.21 5.1 4.5.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.42.25-.69.25-1.29.17-1.42-.08-.12-.28-.2-.57-.35Z"/></svg>Consultar menú del día</a>
+            <a class="btn btn-primary" id="ctaHeroDessert" target="_blank" rel="noopener"><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.52 3.48A11.8 11.8 0 0 0 12.12 0C5.54 0 .19 5.35.19 11.93c0 2.1.55 4.16 1.6 5.98L0 24l6.27-1.64a11.9 11.9 0 0 0 5.85 1.5h.01c6.58 0 11.93-5.35 11.93-11.93 0-3.19-1.24-6.19-3.54-8.45ZM12.13 21.84h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.72.98 1-3.62-.24-.37a9.9 9.9 0 0 1-1.53-5.31C2.23 6.46 6.66 2.03 12.12 2.03c2.65 0 5.14 1.03 7.01 2.91a9.84 9.84 0 0 1 2.91 7c0 5.46-4.44 9.9-9.91 9.9Zm5.43-7.43c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.47-2.4-1.49-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.47.13-.62.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.08-.8.37-.27.3-1.04 1.02-1.04 2.49 0 1.47 1.07 2.89 1.22 3.09.15.2 2.1 3.21 5.1 4.5.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.42.25-.69.25-1.29.17-1.42-.08-.12-.28-.2-.57-.35Z"/></svg>Consultar postres</a>
           </div>
+        </div>
+
+        <div class="card hero-visual">
+          <img src="./img/platoscaseros_cocinandoconpoly.png" alt="Platos caseros de Cocinando con Poly" />
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container info-grid">
+        <article class="card info-card">
+          <h3>Menú del día</h3>
+          <p>Escríbenos y te contamos qué plato está disponible hoy. Atención directa por WhatsApp para resolver tus pedidos rápido.</p>
+        </article>
+        <article class="card info-card">
+          <h3>Precio fijo</h3>
+          <p>Todos los platos del menú del día tienen un valor de <strong>$5.000</strong>, para que pedir sea simple y claro.</p>
+        </article>
+        <article class="card info-card" id="contacto">
+          <h3>Consulta por postres</h3>
+          <p>Además del plato principal, puedes preguntar por los postres del día y agregar algo dulce a tu pedido.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="card cta-banner">
+          <h2 class="section-title" style="margin:0">Haz tu pedido en segundos</h2>
+          <p>Escríbenos por WhatsApp y consulta por el menú del día o por los postres disponibles.</p>
+          <a class="btn btn-wa" id="ctaBanner" target="_blank" rel="noopener"><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.52 3.48A11.8 11.8 0 0 0 12.12 0C5.54 0 .19 5.35.19 11.93c0 2.1.55 4.16 1.6 5.98L0 24l6.27-1.64a11.9 11.9 0 0 0 5.85 1.5h.01c6.58 0 11.93-5.35 11.93-11.93 0-3.19-1.24-6.19-3.54-8.45ZM12.13 21.84h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.72.98 1-3.62-.24-.37a9.9 9.9 0 0 1-1.53-5.31C2.23 6.46 6.66 2.03 12.12 2.03c2.65 0 5.14 1.03 7.01 2.91a9.84 9.84 0 0 1 2.91 7c0 5.46-4.44 9.9-9.91 9.9Zm5.43-7.43c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.47-2.4-1.49-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.47.13-.62.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.08-.8.37-.27.3-1.04 1.02-1.04 2.49 0 1.47 1.07 2.89 1.22 3.09.15.2 2.1 3.21 5.1 4.5.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.42.25-.69.25-1.29.17-1.42-.08-.12-.28-.2-.57-.35Z"/></svg>Ir a WhatsApp</a>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- Footer con logo -->
   <footer>
-    <div class="container footer-grid">
-      <div style="display:flex;gap:1rem;align-items:center">
-        <img src="./img/logo.png" alt="Logo Cocinando con Poly" style="width:56px;height:56px;object-fit:contain;border-radius:12px;box-shadow:var(--shadow)"/>
+    <div class="container">
+      <div class="card footer-box">
         <div>
-          <div style="font-weight:800">Cocinando con Poly</div>
-          <div style="font-size:.9rem;color:#cbd5e1">Hecho con ❤ en el condominio — © <span id="year"></span></div>
+          <strong>Cocinando con Poly</strong><br>
+          <span>Pedidos y consultas directas por WhatsApp</span>
         </div>
-      </div>
-      <div style="text-align:right">
-        <div style="font-size:.9rem;color:#cbd5e1">Pedidos Lun–Vie · 13:30–15:00 · <a id="waFoot" href="#">WhatsApp</a></div>
+        <a class="btn btn-primary" id="ctaFooter" target="_blank" rel="noopener"><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.52 3.48A11.8 11.8 0 0 0 12.12 0C5.54 0 .19 5.35.19 11.93c0 2.1.55 4.16 1.6 5.98L0 24l6.27-1.64a11.9 11.9 0 0 0 5.85 1.5h.01c6.58 0 11.93-5.35 11.93-11.93 0-3.19-1.24-6.19-3.54-8.45ZM12.13 21.84h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.72.98 1-3.62-.24-.37a9.9 9.9 0 0 1-1.53-5.31C2.23 6.46 6.66 2.03 12.12 2.03c2.65 0 5.14 1.03 7.01 2.91a9.84 9.84 0 0 1 2.91 7c0 5.46-4.44 9.9-9.91 9.9Zm5.43-7.43c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.47-2.4-1.49-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.47.13-.62.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.08-.8.37-.27.3-1.04 1.02-1.04 2.49 0 1.47 1.07 2.89 1.22 3.09.15.2 2.1 3.21 5.1 4.5.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.42.25-.69.25-1.29.17-1.42-.08-.12-.28-.2-.57-.35Z"/></svg>Escribir ahora</a>
       </div>
     </div>
   </footer>
 
-  <!-- FAB WhatsApp (móvil) -->
-  <a id="fabWa" class="fab-wa" href="#" aria-label="Pedir por WhatsApp">WA</a>
+  <a class="fab" id="ctaFab" target="_blank" rel="noopener" aria-label="Abrir WhatsApp"><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.52 3.48A11.8 11.8 0 0 0 12.12 0C5.54 0 .19 5.35.19 11.93c0 2.1.55 4.16 1.6 5.98L0 24l6.27-1.64a11.9 11.9 0 0 0 5.85 1.5h.01c6.58 0 11.93-5.35 11.93-11.93 0-3.19-1.24-6.19-3.54-8.45ZM12.13 21.84h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.72.98 1-3.62-.24-.37a9.9 9.9 0 0 1-1.53-5.31C2.23 6.46 6.66 2.03 12.12 2.03c2.65 0 5.14 1.03 7.01 2.91a9.84 9.84 0 0 1 2.91 7c0 5.46-4.44 9.9-9.91 9.9Zm5.43-7.43c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.47-2.4-1.49-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.47.13-.62.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.08-.8.37-.27.3-1.04 1.02-1.04 2.49 0 1.47 1.07 2.89 1.22 3.09.15.2 2.1 3.21 5.1 4.5.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.42.25-.69.25-1.29.17-1.42-.08-.12-.28-.2-.57-.35Z"/></svg></a>
 
   <script>
-    // ===== CONFIGURACIÓN =====
-    const WHATSAPP_NUMBER = "+56942955777";
-    const HORARIO = { abre:"10:00", cierra:"19:00" };
-    const PRECIO_PLATO = 5000;
-    const PRECIO_VEG   = 5000;
-    const PRECIO_HUM   = 2500;
+    const number = '56942955777';
+    const msgMenu = encodeURIComponent('Hola, quiero consultar por el menú del día.');
+    const msgDessert = encodeURIComponent('Hola, quiero consultar por los postres disponibles.');
+    const msgGeneral = encodeURIComponent('Hola, quiero consultar por el menú del día y por los postres disponibles.');
 
-    
-    // Menú real de la semana
-    let menuSemana = {
-      "Lunes":     [{ nombre:"Lazaña de carne", precio:PRECIO_PLATO, tags:["Casero"], img:"./img/lasaña-carne.jpg" }],
-      "Martes":    [{ nombre:"Chapsui de Carne con Arroz Chaufán", precio:PRECIO_PLATO, tags:["Chino"], img:"./img/chapsuicarne.png" }],
-      "Miércoles": [{ nombre:"Carne Mellada con puré",precio:PRECIO_PLATO, tags:["Plato especial"], img:"./img/carnemechadaconpure_cocinandoconpoly.jpg" }],
-      "Jueves":    [{ nombre:"Pastel de Choclo",precio:PRECIO_PLATO, tags:["Plato especial"], img:"./img/pasteldechoclo.jpg"}],
-      "Viernes":   [{ nombre:"Humitas",precio:PRECIO_PLATO, tags:["Casero"], img:"./img/huma.jpg" }]
-    };
-
-    // Postres (placeholder, reemplaza cuando tengas la lista final)
-    const postres = [
-     { nombre:"Pie de limon", precio:1000, img:"./img/piedelimon.png" },
-     { nombre:"Arroz con tres leches", precio:1000, img:"./img/arrozcontresleches.png" },
-    //  { nombre:"Leche asada", precio:2000, img:"https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=1200&auto=format&fit=crop" },
-     // { nombre:"Mote con huesillos", precio:2000, img:"https://images.unsplash.com/photo-1594041680534-e8c8d07f5518?q=80&w=1200&auto=format&fit=crop" }
-    ];
-
-    // Ingredientes vegetarianos (máximo 4)
-    const MAX_ING = 4;
-    const ingredientes = [
-      "Huevo","Aceituna","Atún","Camarón","Champiñones","Tomate Cherry","Zanahoria","Choclo","Habas","Brócoli","Quinoa","Palmitos","Pepino"
-    ];
-
-    // ===== UTILIDADES =====
-    const $ = (sel, el=document) => el.querySelector(sel);
-    const $$ = (sel, el=document) => [...el.querySelectorAll(sel)];
-    const waBase = () => `https://wa.me/${WHATSAPP_NUMBER}`;
-    const waText = (texto) => encodeURIComponent(texto);
-    const precioFmt = (v) => `$${Intl.NumberFormat('es-CL').format(v)}`;
-
-    function ahoraEnHorario(){
-      const [ah, am] = new Date().toLocaleTimeString('es-CL',{hour12:false}).split(':');
-      const ahora = Number(ah)*60 + Number(am);
-      const [abH, abM] = HORARIO.abre.split(':').map(Number);
-      const [ciH, ciM] = HORARIO.cierra.split(':').map(Number);
-      const abre = abH*60 + abM; const cierra = ciH*60 + ciM;
-      return ahora>=abre && ahora<=cierra;
-    }
-
-    function updateStateBadge(){
-      const b = $('#stateBadge');
-      if(!b) return;
-      if(ahoraEnHorario()){
-        b.style.background = '#ecfdf5'; b.style.borderColor = '#a7f3d0'; b.style.color = '#065f46';
-        b.innerHTML = '● <strong>Tomando pedidos ahora</strong>';
-      } else {
-        b.style.background = '#fff7ed'; b.style.borderColor = '#fed7aa'; b.style.color = '#7c2d12';
-        b.innerHTML = '● <strong>Fuera de horario</strong> · deja tu reserva';
-      }
-    }
-
-    // ===== MENÚ (tabs y cards) =====
-    function renderTabs(){
-      const tabs = Object.keys(menuSemana);
-      const cont = $('#tabs'); cont.innerHTML='';
-      tabs.forEach((d,i)=>{
-        const a = document.createElement('a');
-        a.href = `#menu-${encodeURIComponent(d)}`;
-        a.className = 'chip'; a.textContent = d;
-        a.setAttribute('role','tab');
-        a.setAttribute('aria-selected', i===0 ? 'true' : 'false');
-        a.addEventListener('click', (e)=>{ e.preventDefault(); selectDay(d, a) });
-        cont.appendChild(a);
-      });
-      selectDay(tabs[0], cont.firstChild);
-    }
-
-    function selectDay(dia, el){
-      $$('#tabs .chip').forEach(c=>c.setAttribute('aria-selected','false'));
-      el.setAttribute('aria-selected','true');
-      renderDia(dia);
-      location.hash = `#${encodeURIComponent(dia)}`;
-    }
-
-    function renderDia(dia){
-      const cont = $('#dayContent'); cont.innerHTML='';
-      const platos = menuSemana[dia]||[];
-      if(!platos.length){ cont.innerHTML = `<p class="note col-12">Sin platos para <strong>${dia}</strong>.</p>`; return; }
-      platos.forEach(p=>{
-        const col = document.createElement('div'); col.className='col-6';
-        col.innerHTML = `
-          <article class="card dish">
-            <img src="${p.img}" alt="${p.nombre}" width="140" height="100" loading="lazy" />
-            <div>
-              <h3 style="margin:.1rem 0 .35rem">${p.nombre} <span class="badge">${p.tags?.[0]||''}</span></h3>
-              <div class="price">${precioFmt(p.precio)}</div>
-              <div style="margin-top:.45rem;display:flex;gap:.5rem;flex-wrap:wrap">
-                <a class="btn primary" target="_blank" rel="noopener" href="${waBase()}?text=${waText(`Hola Poly! Quiero pedir *${p.nombre}* para *${dia}*. Torre/Depto:`)}">📲 Pedir por WhatsApp</a>
-              </div>
-            </div>
-          </article>`;
-        
-        // Asegurar href correcto en el botón WA por plato (menú por día)
-        try {
-          const waMsg = `Hola Poly! Me interesa el *${p.nombre}* para *${dia}*. Torre/Depto:`;
-          const waLink = col.querySelector('a.btn.primary');
-          if (waLink) {
-            waLink.href = `${waBase()}?text=${waText(waMsg)}`;
-            waLink.target = "_blank";
-            waLink.rel = "noopener";
-          }
-        } catch(e) { /* noop */ }
-
-        cont.appendChild(col);
-      });
-    }
-
-    // Plato del día
-    function renderPlatoDelDia(){
-      const dNames = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
-      const today = new Date();
-      const actual = dNames[today.getDay()];
-      const usable = ["Lunes","Martes","Miércoles","Jueves","Viernes"].includes(actual) ? actual : "Lunes";
-      const plato = (menuSemana[usable]||[])[0];
-      const el = $('#platoDelDia');
-      if(!plato){ el.innerHTML = ''; return; }
-      el.innerHTML = `
-        <div class="card" style="display:flex;gap:1rem;align-items:center;border-left:6px solid var(--brand)">
-          <img src="${plato.img}" alt="${plato.nombre}" style="width:120px;height:90px;object-fit:cover"/>
-          <div>
-            <div class="chip">Plato del día — <strong>${usable}</strong></div>
-            <h3 style="margin:.2rem 0 .2rem">${plato.nombre}</h3>
-            <div class="price">${precioFmt(plato.precio)}</div>
-          </div>
-          <div style="margin-left:auto">
-            <a class="cta" target="_blank" rel="noopener" href="${waBase()}?text=${waText(`Hola Poly! Me interesa el *Plato del día (${plato.nombre})* para *${usable}*. Torre/Depto:`)}">Pedir ahora</a>
-          </div>
-        </div>`;
-    }
-
-    // Carrusel
-    function renderCarousel(){
-      const track=$('#track'), dots=$('#dots'), carousel=$('#carousel'), live=$('#carouselLive');
-      const slides=[]; Object.entries(menuSemana).forEach(([d,pl])=>{ if(pl[0]) slides.push({dia:d, ...pl[0]}) });
-      track.innerHTML=''; dots.innerHTML='';
-      slides.forEach((s,i)=>{
-        const node=document.createElement('div'); node.className='slide';
-        node.setAttribute('role','group'); node.setAttribute('aria-roledescription','slide'); node.setAttribute('aria-label',`${i+1} de ${slides.length}: ${s.nombre}`);
-        node.innerHTML=`<img src="${s.img}" alt="${s.nombre}"><div style="display:flex;flex-direction:column;gap:.6rem;justify-content:center"><div class="tiny">Recomendado de ${s.dia}</div><h3 style="margin:0">${s.nombre}</h3><div class="price">${precioFmt(s.precio)}</div><div><a class="cta" target="_blank" rel="noopener" href="${waBase()}?text=${waText(`Hola Poly! Quiero pedir *${s.nombre}* para *${s.dia}*. Torre/Depto:`)}">Quiero este</a></div></div>`;
-        track.appendChild(node);
-        const d=document.createElement('button'); d.setAttribute('role','tab'); d.setAttribute('aria-controls','track'); d.setAttribute('aria-label',`Ir a slide ${i+1}`); d.addEventListener('click',()=>go(i)); dots.appendChild(d);
-      });
-      let index=0,N=slides.length,timer=null; const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-      function announce(){ if(live) live.textContent=`Mostrando ${index+1} de ${N}: ${slides[index].nombre}` }
-      function updateDots(){ [...dots.querySelectorAll('button')].forEach((b,j)=> b.setAttribute('aria-selected', j===index?'true':'false')) }
-      function go(i){ index=(i+N)%N; track.style.transform=`translateX(-${index*100}%)`; updateDots(); announce(); }
-      function next(){ go(index+1) } function prev(){ go(index-1) }
-      function reset(){ if(reduce) return; clearInterval(timer); timer=setInterval(next,4500) }
-      document.getElementById('next').onclick=next; document.getElementById('prev').onclick=prev;
-      carousel.addEventListener('mouseenter',()=>clearInterval(timer));
-      carousel.addEventListener('focusin',()=>clearInterval(timer));
-      carousel.addEventListener('mouseleave',reset);
-      carousel.addEventListener('focusout',reset);
-      carousel.addEventListener('keydown',(e)=>{ if(e.key==='ArrowRight'){e.preventDefault();next()} if(e.key==='ArrowLeft'){e.preventDefault();prev()} });
-      carousel.setAttribute('tabindex','0');
-      go(0); reset();
-    }
-
-    // Postres
-    function renderPostres(){
-     const grid=$('#postresGrid'); grid.innerHTML='';
-    postres.forEach(p=>{
-     const col=document.createElement('div'); col.className='col-4';
-     col.innerHTML=`<article class="card"><img src="${p.img}" alt="${p.nombre}"/><h3 style="margin:.6rem 0 .2rem">${p.nombre}</h3><div class="price">${precioFmt(p.precio)}</div><div style="margin-top:.5rem"><a class="btn primary" target="_blank" rel="noopener" href="${waBase()}?text=${waText(`Hola Poly! Quiero pedir *${p.nombre}*. Torre/Depto:`)}">📲 Pedir por WhatsApp</a></div></article>`;
-      grid.appendChild(col);
-    });
-    }
-
-    // Vegetarianos
-    function renderVeg(){
-      const form=$('#vegForm'); form.innerHTML='';
-      ingredientes.forEach((n,i)=>{
-        const id=`ing-${i}`; const w=document.createElement('div');
-        w.innerHTML=`<label style="display:flex;gap:.5rem;align-items:center"><input type="checkbox" id="${id}" name="ing" value="${n}"><span>${n}</span></label>`;
-        form.appendChild(w.firstChild);
-      });
-      const countEl=$('#countSel'); const notes=$('#vegNotes'); const link=$('#vegWALink');
-      function update(){
-        const sel=$$('input[name="ing"]:checked').map(x=>x.value);
-        countEl.textContent=sel.length;
-        const unchecked=$$('input[name="ing"]:not(:checked)');
-        unchecked.forEach(i=> i.disabled = sel.length>=MAX_ING);
-        if(sel.length===0){ link.setAttribute('aria-disabled','true'); link.href='#'; return; }
-        link.removeAttribute('aria-disabled');
-        const txt=`Hola Poly! Quiero un *Vegetariano personalizable* con hasta 4 ingredientes. Elegí: ${sel.join(', ')}. Comentarios: ${notes.value||'—'}. Total aprox: ${precioFmt(PRECIO_VEG)}. Torre/Depto:`;
-        link.href = `${waBase()}?text=${waText(txt)}`;
-      }
-      form.addEventListener('change', update);
-      notes.addEventListener('input', update);
-      document.getElementById('vegClear').addEventListener('click', ()=>{ $$('input[name="ing"]').forEach(i=>{i.checked=false;i.disabled=false}); notes.value=''; update(); });
-      update();
-    }
-
-    // Enlaces principales WA
-    function setMainWaLinks(){
-      const txt = waText('Hola Poly, me gustaría pedir del menú de esta semana. ');
-      document.getElementById('btnHeader').href = `${waBase()}?text=${txt}`;
-      document.getElementById('waFoot').href = `${waBase()}?text=${txt}`;
-      document.getElementById('fabWa').href = `${waBase()}?text=${txt}`;
-    }
-
-    
-// Delegado global para abrir WhatsApp en tarjetas de platos por día (fallback)
-document.addEventListener('click', (e) => {
-  const a = e.target.closest('a.btn.primary');
-  if (!a) return;
-  const card = a.closest('.dish.card');
-  if (!card) return;
-  const href = a.getAttribute('href') || '';
-  if (href && href !== '#') return;
-  e.preventDefault();
-  const title = card.querySelector('h3')?.textContent.trim() || '';
-  const selected = document.querySelector('#tabs .chip[aria-selected="true"]');
-  const day = selected ? selected.textContent.trim() : '';
-  const msg = `Hola Poly! Me interesa el *${title}* para *${day}*. Torre/Depto:`;
-  window.open(`${waBase()}?text=${waText(msg)}`, '_blank', 'noopener');
-});
-
-    // INIT
-    (function init(){
-      setMainWaLinks();
-      updateStateBadge(); setInterval(updateStateBadge, 60*1000);
-      renderPlatoDelDia(); renderTabs(); renderCarousel(); renderPostres(); renderVeg();
-      document.getElementById('year').textContent = new Date().getFullYear();
-    })();
+    document.getElementById('ctaTop').href = `https://wa.me/${number}?text=${msgGeneral}`;
+    document.getElementById('ctaHeroMenu').href = `https://wa.me/${number}?text=${msgMenu}`;
+    document.getElementById('ctaHeroDessert').href = `https://wa.me/${number}?text=${msgDessert}`;
+    document.getElementById('ctaBanner').href = `https://wa.me/${number}?text=${msgGeneral}`;
+    document.getElementById('ctaFooter').href = `https://wa.me/${number}?text=${msgGeneral}`;
+    document.getElementById('ctaFab').href = `https://wa.me/${number}?text=${msgGeneral}`;
   </script>
-
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-<script>
-  (function(){
-    var el = document.querySelector('.postres-swiper');
-    if (!el) return;
-    new Swiper('.postres-swiper', {
-      slidesPerView: 1.1,
-      spaceBetween: 12,
-      loop: false,
-      autoplay: { delay: 3500, disableOnInteraction: false },
-      navigation: {
-        nextEl: '.postres-swiper .swiper-button-next',
-        prevEl: '.postres-swiper .swiper-button-prev',
-      },
-      pagination: {
-        el: '.postres-swiper .swiper-pagination',
-        clickable: true,
-      },
-      breakpoints: {
-        640:  { slidesPerView: 1.2, spaceBetween: 16 },
-        768:  { slidesPerView: 2,   spaceBetween: 16 },
-        1024: { slidesPerView: 3,   spaceBetween: 20 }
-      }
-    });
-  })();
-</script>
-
 </body>
 </html>
